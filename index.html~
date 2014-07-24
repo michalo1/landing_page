@@ -37,20 +37,17 @@
                 data: {"entry_964947242" : email},
                 type: "POST",
                 dataType: "xml",
-                statusCode: {
-                    0: function (){
-			ga('send', 'event', 'button', 'click', 'subscribe');
+		success: function (html) {
+                	ga('send', 'event', 'button', 'click', 'subscribe');
 			alert('success');
-                    },
-                    200: function (){
-			ga('send', 'event', 'button', 'click', 'subscribe');
-			alert('success');
-                    }
-                }
+              	},
+              	error: function (error) {
+                	ga('send', 'event', 'button', 'click', 'subscribe error', error);
+			alert('error');
+              	}
             });
         }
         else {
-	    ga('send', 'event', 'button', 'click', 'subscribe error');
 	    alert('invalid e-mail');
         }
     }
